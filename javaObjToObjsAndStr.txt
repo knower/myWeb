@@ -1,4 +1,37 @@
+<<<<<<< HEAD
 
+=======
+	public static void main(String[] args) {
+		String pdaCode = "1302";
+		String deptCode = "1433a,1258b,1234b";
+		Object objs[] = null;
+		StringBuffer sbf = new StringBuffer(
+				"select t.pda_id,t.ward_code from pda_manage t where t.pda_id = ?");
+		if (deptCode.indexOf(",") != -1) {
+			String deptCodes[] = deptCode.split(",");
+			objs = new Object[deptCodes.length + 1];
+			sbf.append(" and t.ward_code in(");
+			for (int i = 0; i < deptCodes.length; i++) {
+				if (i == 0) {
+					objs[i] = pdaCode;
+				} else {
+					objs[i] = deptCodes[i - 1];
+					objs[i + 1] = deptCodes[i];
+				}
+				
+				if(i != deptCodes.length-1){
+					sbf.append("?,");
+				}
+				else sbf.append("?)");
+			}
+		}
+		System.out.println(sbf.toString());
+		for (int j = 0; j < objs.length; j++) {
+			System.out.println(objs[j]);
+		}
+	}
+	
+>>>>>>> 740994d80b2b05730bd26bd7e705973eaf42d2aa
 	/**
 	 * 方法名 ：getObjtoStr<br>
 	 * 方法描述 ：把对象参数转换为字符串<br>
@@ -43,6 +76,27 @@
 	}
 	
 	
+<<<<<<< HEAD
+=======
+	public Object[] getObjsToOrderObjs(int numArgs,String deptCode){
+		
+		return null;
+	}
+	
+	//未完成
+	public Object[] getObjsToOrderObjs(int numArgs,String deptCode){
+		
+		return null;
+	}
+	
+	
+	/**
+	 * @updater Gavin
+	 * @date 2014-11-28
+	 * @description 得到跌倒（坠床）表当天科室下的评估结果,只取当天内容
+	 * @subDescription 用于科室合并,拼装sql
+	 */
+>>>>>>> 740994d80b2b05730bd26bd7e705973eaf42d2aa
 	
 	
 	
